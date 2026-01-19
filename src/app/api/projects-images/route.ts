@@ -1,5 +1,7 @@
 import { google } from "googleapis";
 
+export const revalidate = 60;
+
 export async function GET() {
   const auth = new google.auth.JWT({
     email: process.env.GDRIVE_CLIENT_EMAIL,
