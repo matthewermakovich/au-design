@@ -1,0 +1,58 @@
+{
+  "name": "art-union-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --fix",
+    "prepare": "husky && echo \"npx lint-staged && pnpm typecheck\" > .husky/_/pre-commit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.14.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@gsap/react": "2.1.2",
+    "@mui/icons-material": "7.3.5",
+    "@mui/material": "7.3.5",
+    "@react-three/fiber": "8.18.0",
+    "aos": "2.3.4",
+    "googleapis": "169.0.0",
+    "gsap": "3.13.0",
+    "hamburger-react": "2.5.2",
+    "next": "14.2.33",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.181.2"
+  },
+  "devDependencies": {
+    "@types/aos": "3.0.7",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "@types/three": "0.181.0",
+    "@typescript-eslint/eslint-plugin": "8.47.0",
+    "@typescript-eslint/parser": "8.47.0",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "9",
+    "eslint-config-next": "16.0.3",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.2.6",
+    "prettier": "3.6.2",
+    "typescript": "5"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ]
+  }
+}
