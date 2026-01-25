@@ -1,16 +1,15 @@
 "use client";
 
 import { Box } from "@mui/material";
-import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 
-import { type ImageItemType } from "./types";
+import ProjectImage from "@/components/ProjectImage";
+import { type ImageItemType } from "@/types";
 
-import { Container, Grid, GridItem, LoaderOverlay, Spinner } from "./styles";
+import { Container, Grid, Spinner } from "./styles";
 
 const ProjectsPage: FC = () => {
   const [images, setImages] = useState<ImageItemType[]>([]);
-  const [loaded, setLoaded] = useState<Record<string, boolean>>({});
   const [loadingImages, setLoadingImages] = useState(true);
 
   useEffect(() => {
@@ -23,10 +22,6 @@ const ProjectsPage: FC = () => {
       })
       .catch(() => setLoadingImages(false));
   }, []);
-
-  const handleLoad = (id: string) => {
-    setLoaded((prev) => ({ ...prev, [id]: true }));
-  };
 
   if (loadingImages) {
     return (
@@ -46,21 +41,11 @@ const ProjectsPage: FC = () => {
     <Container>
       <Grid>
         {images.map((image, index) => (
-          <GridItem key={image.id} $wide={(index + 1) % 7 === 0}>
-            {!loaded[image.id] && (
-              <LoaderOverlay>
-                <Spinner />
-              </LoaderOverlay>
-            )}
-            <Image
-              src={image.url}
-              alt=""
-              fill
-              unoptimized
-              loading="lazy"
-              onLoad={() => handleLoad(image.id)}
-            />
-          </GridItem>
+          <ProjectImage
+            key={image.id}
+            image={image}
+            wide={(index + 1) % 7 === 0}
+          />
         ))}
       </Grid>
     </Container>

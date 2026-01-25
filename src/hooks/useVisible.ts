@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useVisible = (threshold = 0.9) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+export const useVisible = <T extends Element>(threshold = 0.9) => {
+  const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -13,9 +13,9 @@ export const useVisible = (threshold = 0.9) => {
       ([entry]) => {
         const ratio = entry.intersectionRatio;
 
-        if (ratio >= threshold && !visible) {
+        if (ratio >= threshold) {
           setVisible(true);
-        } else if (ratio < threshold && visible) {
+        } else {
           setVisible(false);
         }
       },
@@ -25,7 +25,7 @@ export const useVisible = (threshold = 0.9) => {
     observer.observe(el);
 
     return () => observer.disconnect();
-  }, [threshold, visible]);
+  }, [threshold]);
 
   return { ref, visible };
 };

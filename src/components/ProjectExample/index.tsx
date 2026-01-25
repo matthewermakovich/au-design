@@ -22,7 +22,7 @@ const ProjectExample: FC<ProjectExampleProps> = (props) => {
 
   const { isTablet } = useDevice();
 
-  const { ref, visible } = useVisible(0.9);
+  const { ref, visible } = useVisible<HTMLDivElement>(0.9);
 
   return (
     <Container>
